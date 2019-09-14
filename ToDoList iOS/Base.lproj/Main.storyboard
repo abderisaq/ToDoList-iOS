@@ -48,7 +48,7 @@
                                                     <action selector="addToDo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WPm-jZ-ryr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6k-Mh-gUO" customClass="RoundButton" customModule="ToDoList_iOS" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6k-Mh-gUO" customClass="RoundButton" customModule="ToDoList_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="50"/>
                                                 <color key="backgroundColor" red="0.65215736629999999" green="0.1815012097" blue="0.1192525104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -104,6 +104,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="clearButton" destination="l6k-Mh-gUO" id="oia-b5-VnY"/>
                         <outlet property="tableView" destination="ycx-Zw-xhe" id="cOX-zz-Me4"/>
                     </connections>
                 </viewController>

@@ -11,10 +11,10 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var clearButton: RoundButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func addToDo(_ sender: RoundButton) {
@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let name = alert.textFields?.first?.text {
                 if (alert.textFields?.first?.text != "") {
                     DataStorage.add(newToDo: name)
-                    self.tableView.reloadData()
+                    self.updateTableView()
                 }
             }
         }))
@@ -43,6 +43,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func clearToDoList(_ sender: RoundButton) {
         DataStorage.removeAll()
+        updateTableView()
+    }
+    
+    func updateTableView() {
+        if (DataStorage.length() != 0) {
+            clearButton.isEnabled = true
+        } else {
+            clearButton.isEnabled = false
+        }
         tableView.reloadData()
     }
     
@@ -71,6 +80,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (editingStyle == .delete) {
             DataStorage.remove(index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            updateTableView()
         }
         
     }
