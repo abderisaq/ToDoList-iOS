@@ -10,7 +10,7 @@ import UIKit
 
 class DataStorage: NSObject {
 
-    static var dataStorageArray:[String] = ["Go to school", "Do the homework"]
+    static var dataStorageArray:[String] = []
     
     class func add(newToDo:String) {
         DataStorage.dataStorageArray.append(newToDo)

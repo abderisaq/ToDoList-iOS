@@ -18,8 +18,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func addToDo(_ sender: RoundButton) {
-        DataStorage.add(newToDo: "T##String  dddd")
-        tableView.reloadData()
+        
+        let alert = UIAlertController(title: "Add new ToDo", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input your todo here..."
+        })
+        
+        alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
+            
+            if let name = alert.textFields?.first?.text {
+                DataStorage.add(newToDo: name)
+                self.tableView.reloadData()
+            }
+        }))
+        
+        self.present(alert, animated: true)
+
+        
     }
     
     @IBAction func clearToDoList(_ sender: RoundButton) {
@@ -44,6 +61,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = DataStorage.dataStorageArray[indexPath.row]
         
         return cell
+    }
+    
+    // Removing something from the TableView
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if (editingStyle == .delete) {
+            DataStorage.remove(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
     }
     
     
