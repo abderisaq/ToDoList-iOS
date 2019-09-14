@@ -10,13 +10,21 @@ import UIKit
 
 class DataStorage: NSObject {
 
-    static var dataStorageArray: [String] = []
+    static var dataStorageArray:[String] = ["Go to school", "Do the homework"]
     
-    class func add(newToDo: String) {
+    class func add(newToDo:String) {
         DataStorage.dataStorageArray.append(newToDo)
     }
     
-    class func remove(index: Int) {
+    class func remove(index:Int) {
         DataStorage.dataStorageArray.remove(at: index)
+    }
+    
+    class func removeAll() {
+        DataStorage.dataStorageArray.removeAll()
+    }
+    
+    class func length() -> Int {
+        return DataStorage.dataStorageArray.count
     }
 }
