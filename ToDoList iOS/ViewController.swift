@@ -29,8 +29,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: "ADD", style: .default, handler: { action in
             
             if let name = alert.textFields?.first?.text {
-                DataStorage.add(newToDo: name)
-                self.tableView.reloadData()
+                if (alert.textFields?.first?.text != "") {
+                    DataStorage.add(newToDo: name)
+                    self.tableView.reloadData()
+                }
             }
         }))
         
